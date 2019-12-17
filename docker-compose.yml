@@ -1,0 +1,19 @@
+version: "3"
+
+services: 
+    db:
+        image: mongo
+        networks: 
+            - backend
+        ports: 
+            - "27017:27017"
+    api:
+        build: 
+        ports: 
+            - "80:80"
+        volumes: 
+            - .:/
+        depends_on: 
+            - db
+    networks: 
+        backend:
